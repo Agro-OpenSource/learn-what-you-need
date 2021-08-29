@@ -1,8 +1,9 @@
-import Vuex from 'vuex';
+/* eslint max-classes-per-file: "off" */
+import { Store } from 'vuex';
 import { getModule } from 'vuex-module-decorators';
 import { provideVuex, provide } from 'provide-consume-decorator';
 import { Component, Vue } from 'vue-property-decorator';
-import { mount, VueClass } from '@vue/test-utils';
+import { mount, VueClass, Wrapper } from '@vue/test-utils';
 
 import FilestoreStore from '@/stores/FilestoreStore';
 import { FilestoreMock } from '@/services/__tests__';
@@ -13,13 +14,14 @@ const vi = new VueInitializer();
 const $router = {
   push: jest.fn(),
 };
+
 const $route = {
   params: {
     url: 'test',
   },
 };
 
-export default (VueComponent: VueClass<Vue>, filestoreMock: FilestoreMock) => {
+export default (VueComponent: VueClass<Vue>, filestoreMock: FilestoreMock) : Wrapper<Vue> => {
   // store mock
   @provideVuex({
     filestore: () => filestoreMock,
@@ -37,7 +39,7 @@ export default (VueComponent: VueClass<Vue>, filestoreMock: FilestoreMock) => {
 
   const localVue = vi.getNewLocalVue();
 
-  const store = new Vuex.Store({
+  const store = new Store({
     modules: {
       filestoreStore: FilestoreStoreMock,
     },

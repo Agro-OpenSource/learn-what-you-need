@@ -1,4 +1,5 @@
-import Vuex from 'vuex';
+/* eslint max-classes-per-file: "off" */
+import { Store } from 'vuex';
 import { getModule } from 'vuex-module-decorators';
 import { provideVuex, provide } from 'provide-consume-decorator';
 import { Component, Vue } from 'vue-property-decorator';
@@ -45,7 +46,7 @@ export default (
 
   const localVue = vi.getNewLocalVue();
 
-  const store = new Vuex.Store({
+  const store = new Store({
     modules: {
       navigationStore: NavigationStoreMock,
       filestoreStore: FilestoreStoreMock,

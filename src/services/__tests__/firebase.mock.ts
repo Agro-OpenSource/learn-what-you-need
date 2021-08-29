@@ -12,21 +12,17 @@ class FirebaseMock implements FirebaseService {
 
   public login(userAuth: UserAuthenticateSend): Promise<string> {
     const { callback } = this;
-    if (callback) {
-      callback.userChange({ userName: userAuth.email, userRoles: ['user'] });
-    } else {
-      console.error('Navigation/Index.vue is not connected');
-    }
+    if (callback) callback.userChange({ userName: userAuth.email, userRoles: ['user'] });
+    else console.error('Navigation/Index.vue is not connected');
+
     return Promise.resolve('');
   }
 
   public logout(): Promise<void> {
     const { callback } = this;
-    if (callback) {
-      callback.userChange({ userName: '', userRoles: [] });
-    } else {
-      console.error('Navigation/Index.vue is not connected');
-    }
+    if (callback) callback.userChange({ userName: '', userRoles: [] });
+    else console.error('Navigation/Index.vue is not connected');
+
     return Promise.resolve();
   }
 }

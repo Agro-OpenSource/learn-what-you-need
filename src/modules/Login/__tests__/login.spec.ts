@@ -1,8 +1,8 @@
+import factory from './__factory';
 import Login from '@/modules/Login/Index.vue';
 import FirebaseMock from '@/services/__tests__/firebase.mock';
 import LoginProps from '@/modules/Login/types/LoginProps';
 import { UserAuthenticate } from '@/types/UserAuthenticate';
-import factory from './__factory';
 
 const firebaseMock = new FirebaseMock();
 
@@ -27,9 +27,8 @@ describe('modules/Login/Index.vue', () => {
     const wrap = createComponent();
     const vm = (wrap.vm as any) as LoginProps;
     const { ds } = vm;
-    if (ds) {
-      ds.userChange({ userName, userRoles: ['User'] });
-    }
+    if (ds) ds.userChange({ userName, userRoles: ['User'] });
+
     await (wrap.vm as any).$nextTick();
     expect(ds?.getIsAuthorized).toBeTruthy();
     expect(vm.isAuthorized).toBeTruthy();

@@ -3,4 +3,6 @@ import { Desk } from './Desk';
 import { DeskType } from './DeskType';
 import { Dictionary } from './Dictionary';
 
-export { Desk, DeskType, Dictionary, DocRef };
+export {
+  Desk, DeskType, Dictionary, DocRef,
+};

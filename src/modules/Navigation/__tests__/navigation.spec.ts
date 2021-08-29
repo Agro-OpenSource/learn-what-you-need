@@ -1,7 +1,7 @@
+import factory from './__factory';
 import Navigation from '@/modules/Navigation/Index.vue';
 import FirebaseMock from '@/services/__tests__/firebase.mock';
 import NavigationStore from '@/stores/NavigationStore';
-import factory from './__factory';
 
 const firebaseMock = new FirebaseMock();
 
@@ -13,17 +13,15 @@ const createComponent = () => {
 describe('modules/Navigation/Index.vue', () => {
   it('Check is not authorized on start', () => {
     const wrap = createComponent();
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    const vm = wrap.vm as any;
-    const ds = vm.ds as NavigationStore;
+    const vm = wrap.vm as Vue & { ds: NavigationStore };
+    const { ds } = vm;
 
     expect(wrap.vm).toBeInstanceOf(Object);
     expect(ds.getIsAuthorized).toBeFalsy();
   });
   it('Check is authorized after login', async () => {
     const wrap = createComponent();
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    const vm = wrap.vm as any;
+    const vm = wrap.vm as Vue & { ds: NavigationStore, login: (mode: {email: string, password: string}) => void};
     const ds = vm.ds as NavigationStore;
     ds.login({ email: '', password: '' });
 
@@ -31,9 +29,8 @@ describe('modules/Navigation/Index.vue', () => {
   });
   it('Check is not authorized after logout', async () => {
     const wrap = createComponent();
-    /* eslint-disable  @typescript-eslint/no-explicit-any */
-    const vm = wrap.vm as any;
-    const ds = vm.ds as NavigationStore;
+    const vm = wrap.vm as Vue & { ds: NavigationStore, logout: () => void};
+    const { ds } = vm;
     ds.login({ email: '', password: '' });
     await vm.$nextTick();
     vm.logout();

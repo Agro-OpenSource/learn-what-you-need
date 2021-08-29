@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
       return next({ path: '/login?', query: { returnUrl: to.path } });
     }
   }
-  const metaTitle = to.meta.title;
+  const metaTitle = to.meta?.title || '';
   document.title = metaTitle
     ? `Learn what you need - Portal - ${metaTitle}`
     : 'Learn what you need - Portal';

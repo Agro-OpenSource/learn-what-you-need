@@ -1,8 +1,8 @@
+import { Desk, DeskType } from '../models';
 import { FilestoreService } from '@/services/interface/FilestoreService';
-import { Desk, DocRef, DeskType } from '../models';
 
 class FilestoreMock implements FilestoreService {
-  getDeskTypes(deskRef: DocRef): Promise<DeskType[]> {
+  getDeskTypes(): Promise<DeskType[]> {
     return Promise.resolve([]);
   }
 

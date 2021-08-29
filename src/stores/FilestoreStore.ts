@@ -1,5 +1,7 @@
 import { provide, consume } from 'provide-consume-decorator';
-import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
+import {
+  Module, VuexModule, Mutation, Action,
+} from 'vuex-module-decorators';
 import FilestoreServiceImpl from '@/services/filestore.service';
 import { Desk } from '@/services/models/Desk';
 import { FilestoreService } from '@/services/interface/FilestoreService';
@@ -85,9 +87,8 @@ export default class extends VuexModule {
   @Action
   async setDeskUrl(url: string): Promise<void> {
     this.setDeskNotExist(false);
-    if (this.desks.length === 0) {
-      await this.takeDesks();
-    }
+    if (this.desks.length === 0) await this.takeDesks();
+
     const desks = this.desks || [];
     const desk = desks.find((el) => el.url === url);
     if (desk) {
@@ -100,8 +101,6 @@ export default class extends VuexModule {
 
   @Action
   async takeDeskTypes(): Promise<void> {
-    console.log('--takeDeskTypes--');
-    console.log(this.desk);
     if (!this.desk) {
       return;
     }

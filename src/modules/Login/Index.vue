@@ -10,9 +10,9 @@
         <b-form-group label-cols-sm="3" label="Email" label-for="userName">
           <b-form-input
             id="userName"
+            ref="userName"
             v-model="model.email"
             placeholder="user@user.pl"
-            ref="userName"
             @keyup.enter="login"
           >
           </b-form-input>
@@ -23,11 +23,11 @@
       <b-col cols="12" md="8">
         <b-form-group label-cols-sm="3" label="Password" label-for="password">
           <b-form-input
-            type="password"
             id="password"
             v-model="model.password"
-            @keyup.enter="login"
+            type="password"
             placeholder="password"
+            @keyup.enter="login"
           ></b-form-input>
         </b-form-group>
       </b-col>
@@ -102,9 +102,8 @@ export default class Login extends Vue implements LoginProps {
     this.$nextTick(() => {
       const userNameInput = this.$refs.userName as HTMLInputElement | undefined;
       /* istanbul ignore if  */
-      if (!userNameInput) {
-        return;
-      }
+      if (!userNameInput) return;
+
       userNameInput.focus();
     });
   }
@@ -125,11 +124,9 @@ export default class Login extends Vue implements LoginProps {
       return;
     }
     this.message.content = await this.ds.login(this.model);
-    if (this.message.content) {
-      this.message.show = true;
-    } else {
-      this.errorAfterTimOut();
-    }
+    if (this.message.content) this.message.show = true;
+    else this.errorAfterTimOut();
+
     this.waitingResponse = false;
   }
 

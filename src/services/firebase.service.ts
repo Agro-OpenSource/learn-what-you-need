@@ -25,11 +25,8 @@ export default class implements FirebaseService {
     this.callbacks = navigationStore;
     this.app = firebase.initializeApp(firebaseConfig);
     firebase.auth().onAuthStateChanged((user: firebase.User | null) => {
-      if (user) {
-        this.userAuthStateChanged(user.displayName || '', [ROLES_USER]);
-      } else {
-        this.userAuthStateChanged('', []);
-      }
+      if (user) this.userAuthStateChanged(user.displayName || '', [ROLES_USER]);
+      else this.userAuthStateChanged('', []);
     });
   }
 

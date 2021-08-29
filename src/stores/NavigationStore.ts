@@ -1,5 +1,7 @@
 import { provide, consume } from 'provide-consume-decorator';
-import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
+import {
+  Module, VuexModule, Mutation, Action,
+} from 'vuex-module-decorators';
 import FirebaseServiceImpl from '@/services/firebase.service';
 
 import { FirebaseService } from '@/services/interface/FirebaseService';
@@ -63,9 +65,8 @@ export default class extends VuexModule implements FirebaseCallbackStoreInterfac
 
   @Action
   async login(userAuth: UserAuthenticateSend) {
-    if (!userAuth) {
-      return LOGIN_OBJECT_NOT_VALID;
-    }
+    if (!userAuth) return LOGIN_OBJECT_NOT_VALID;
+
     const message = await this.firebase.login(userAuth);
     return message;
   }
