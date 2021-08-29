@@ -55,7 +55,7 @@ export default class Desk extends Vue {
   // Event
   public navigateLearn() : void {
     // TODO: Implement learn
-    this.$bvModal.msgBoxOk('Learn in not implement yet');
+    alert('Learn in not implement yet');
   }
 
   public navigateEdit() : void {

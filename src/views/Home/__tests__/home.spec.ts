@@ -1,7 +1,7 @@
 import factory from './__factory';
-import Home from '@/modules/Home/Index.vue';
+import Home from '@/moviewsdules/Home/Index.vue';
 import { FirebaseMock, FilestoreMock } from '@/services/__tests__';
-import HomeProps from '@/modules/Home/types/HomeProps';
+import HomeProps from '@/views/Home/types/HomeProps';
 
 const firebaseMock = new FirebaseMock();
 const filestoreMock = new FilestoreMock();
@@ -11,7 +11,7 @@ const createComponent = () => {
   return component;
 };
 
-describe('modules/Home/Index.vue', () => {
+describe('views/Home/Index.vue', () => {
   it('Check Vue component is created', async () => {
     const wrap = createComponent();
     const vm = wrap.vm as HomeProps;

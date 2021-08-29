@@ -64,7 +64,7 @@ import { provide, consume } from 'provide-consume-decorator';
 import { getModule } from 'vuex-module-decorators';
 import NavigationStore from '@/stores/NavigationStore';
 import UserAuthenticateSend from '@/types/UserAuthenticateSend';
-import LoginProps from '@/modules/Login/types/LoginProps';
+import LoginProps from '@/views/Login/types/LoginProps';
 
 const LOGIN_EMAIL_NOTVALID_MESSAGE = 'Email is incorrect.';
 const LOGIN_PASSWORD_NOTVALID_MESSAGE = 'Password is incorrect.';

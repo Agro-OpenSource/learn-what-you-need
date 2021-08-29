@@ -22,16 +22,11 @@
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { BIconPerson } from 'bootstrap-vue';
 import { provide, consume } from 'provide-consume-decorator';
 import { getModule } from 'vuex-module-decorators';
 import NavigationStore from '@/stores/NavigationStore';
 
-@Component({
-  components: {
-    BIconPerson,
-  },
-})
+@Component
 @provide({
   // provide a data store
   /* istanbul ignore next */

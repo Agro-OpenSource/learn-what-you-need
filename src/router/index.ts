@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { getModule } from 'vuex-module-decorators';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '@/modules/Home/Index.vue';
+import Home from '@/views/Home/Index.vue';
 import store from '@/stores/index';
 import NavigationStore from '@/stores/NavigationStore';
 import RoleName from '@/helpers/RoleName';
@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/desk/:url',
     name: 'Desk',
-    component: () => import(/* webpackChunkName: "desk" */ '@/modules/Desk/Desk.vue'),
+    component: () => import(/* webpackChunkName: "desk" */ '@/views/Desk/Desk.vue'),
     meta: {
       authorize: [RoleName.User],
     },
@@ -28,7 +28,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/desk/:url/edit',
     name: 'DeskEdit',
-    component: () => import(/* webpackChunkName: "desk-edit" */ '@/modules/DeskEdit/DeskEdit.vue'),
+    component: () => import(/* webpackChunkName: "desk-edit" */ '@/views/DeskEdit/DeskEdit.vue'),
     meta: {
       authorize: [RoleName.User],
     },
@@ -36,7 +36,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "accountsLogin" */ '@/modules/Login/Index.vue'),
+    component: () => import(/* webpackChunkName: "accountsLogin" */ '@/views/Login/Index.vue'),
     meta: {
       title: 'Login',
       authorize: [],

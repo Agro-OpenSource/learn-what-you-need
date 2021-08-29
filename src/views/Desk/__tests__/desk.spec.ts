@@ -1,7 +1,7 @@
 import deskProp from '../types/deskProp';
 import factory from './__factory';
 import { FilestoreMock } from '@/services/__tests__';
-import DeskVue from '@/modules/Desk/Desk.vue';
+import DeskVue from '@/views/Desk/Desk.vue';
 
 const filestoreMock = new FilestoreMock();
 
@@ -10,7 +10,7 @@ const createComponent = () => {
   return component;
 };
 
-describe('modules/Desk/Index.vue', () => {
+describe('views/Desk/Index.vue', () => {
   it('Check Vue component is created', async () => {
     const wrap = createComponent();
     const vm = wrap.vm as deskProp & Vue;

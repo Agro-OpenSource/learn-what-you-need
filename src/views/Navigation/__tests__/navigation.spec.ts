@@ -1,5 +1,5 @@
 import factory from './__factory';
-import Navigation from '@/modules/Navigation/Index.vue';
+import Navigation from '@/views/Navigation/Index.vue';
 import FirebaseMock from '@/services/__tests__/firebase.mock';
 import NavigationStore from '@/stores/NavigationStore';
 
@@ -10,7 +10,7 @@ const createComponent = () => {
   return component;
 };
 
-describe('modules/Navigation/Index.vue', () => {
+describe('views/Navigation/Index.vue', () => {
   it('Check is not authorized on start', () => {
     const wrap = createComponent();
     const vm = wrap.vm as Vue & { ds: NavigationStore };

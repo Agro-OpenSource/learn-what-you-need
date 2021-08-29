@@ -1,7 +1,7 @@
 import factory from './__factory';
-import Login from '@/modules/Login/Index.vue';
+import Login from '@/views/Login/Index.vue';
 import FirebaseMock from '@/services/__tests__/firebase.mock';
-import LoginProps from '@/modules/Login/types/LoginProps';
+import LoginProps from '@/views/Login/types/LoginProps';
 import { UserAuthenticate } from '@/types/UserAuthenticate';
 
 const firebaseMock = new FirebaseMock();
@@ -11,7 +11,7 @@ const createComponent = () => {
   return component;
 };
 
-describe('modules/Login/Index.vue', () => {
+describe('views/Login/Index.vue', () => {
   it('Check is not authorized on start', async () => {
     const wrap = createComponent();
     /* eslint-disable  @typescript-eslint/no-explicit-any */
